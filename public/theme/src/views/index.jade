@@ -1,0 +1,73 @@
+extends templates/layout
+
+block content
+	.index-slider.js-index-slider
+		.slider__list
+			.list__item.js-slide(style="background-image: url('images/tmp/index-slider1.jpg');")
+				.wrapper
+					.item-content
+						.item__title Сегодня участки с действующими<br>Коммуникациями с выгодой<br>до 200 000 рублей
+						.item__btns
+							a(href="#").us-btn.btn-transparent
+								span Выбрать участок
+			.list__item.js-slide(style="background-image: url('images/tmp/index-slider2.jpg');")
+				.wrapper
+					.item-content
+						.item__title Сегодня участки с действующими<br>Коммуникациями с выгодой<br>до 200 000 рублей
+						.item__btns
+							a(href="#").us-btn.btn-transparent
+								span Выбрать участок
+		ul.slider__dots.js-dots
+			//- li
+			//- li.active
+			//- li
+	.index-block
+		.wrapper
+			.block__map-icon
+			.block__text Симферопольское шоссе, 70 км от МКАД
+			.block__btn
+				a(href="#").us-btn.btn-white
+					span Карта
+	.index-filter
+		a(href="#").filter__item
+			.item__title Готовые дома за 3.5 млн
+		a(href="#").filter__item
+			.item__title Участки без подряда
+	.index-block
+		.wrapper
+			.block__title Коммуникации
+			.block__text.text-min Газ, электричество, водопровод входят в стоимость земельного участка.<br>Забор с калиткой и воротами тоже.
+			.block__btn
+				a(href="#").us-btn.btn-blue
+					span Узнать подробнее
+	.index-benefits
+		.benefits-container
+			.benefits__item
+				.item__image.image-light
+				.item__title Свет
+				.item__desc Электросеть состоит из подземного кабеля, электро-шкафов и трансформаторной подстанции.В посёлке не «висят провода на столбах», кабель лежит на глубине 0,8 метра.
+			.benefits__item
+				.item__image.image-gas
+				.item__title Газ
+				.item__desc	Два главных элемента газоснабжения: распредели-тельный пункт и трасса газопровода среднего давления. Газопровод проходит по обочинам дорог.
+			.benefits__item
+				.item__image.image-water
+				.item__title Вода
+				.item__desc 2 артезианские скважины источник водоснабжения в поселке. Из них вода сначала поступает в резервуары. запаса воды хватит на время профилактических работ или ремонта.
+	.index-block.block-choise
+		.block-container
+			.wrapper
+				.block__title Выбор участка
+				.block__text.text-min Вы можете выбрать участок на карте либо подобрать подходящий лично вам<br>по параметрам и тех. особенностям. От 9 до 25 соток.
+				.block__btn
+					a(href="#").us-btn.btn-green
+						span Подбор участка
+		.block-line
+			.wrapper
+				.line__inside
+					b Готовность:
+					span высажено 16 декоративнолиственных кустарников, 14 фруктовых деревьев.
+	.index-gallery
+		.gallery__line
+			each i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+				a.line__item(href="#" style="background-image: url(images/tmp/index-bottom-slider1.jpg);")
