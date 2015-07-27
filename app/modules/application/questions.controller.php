@@ -64,11 +64,11 @@ class QuestionsController extends BaseController {
 
             $question = new Questions();
             $question->order = Input::get('order');
-            $question->title = Input::get('title');
+            $question->title = strip_tags(Input::get('question'));
             $question->question = Input::get('question');
             $question->answer = Input::get('answer');
-            $question->is_branding = Input::has('is_branding') ? 1 : 0;
-            $question->is_true = Input::has('is_true') ? 1 : 0;
+            $question->is_branding = Input::get('is_branding');
+            $question->is_true = Input::get('is_true');
             $question->save();
 
             $json_request['responseText'] = "Вопрос добавлен";
@@ -100,8 +100,8 @@ class QuestionsController extends BaseController {
             $question->title = Input::get('title');
             $question->question = Input::get('question');
             $question->answer = Input::get('answer');
-            $question->is_branding = Input::has('is_branding') ? 1 : 0;
-            $question->is_true = Input::has('is_true') ? 1 : 0;
+            $question->is_branding = Input::get('is_branding');
+            $question->is_true = Input::get('is_true');
             $question->save();
 
             $json_request['responseText'] = "Вопрос сохранен";

@@ -38,6 +38,10 @@ class ApiController extends BaseController {
     }
     public function helpMethod($method){
 
+        $email = 'vkharseev@gmail.com';
+        $echo = '/api/register?token='.md5($email.'doctor_on_work_testing').'&remote_id=1&email='.$email.'&name=Владимир Харсеев'."<br>\n";
+        Helper::tad($echo);
+
         $echo = '';
         switch ($method):
             case 'register' :

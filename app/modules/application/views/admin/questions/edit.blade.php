@@ -4,6 +4,7 @@
 @section('content')
     @include($module['tpl'].'.questions.menu')
     {{ Form::model($question, array('route'=>array('questions.update',$question->id),'class'=>'smart-form','id'=>'questions-form','role'=>'form','method'=>'put')) }}
+    {{ Form::hidden('title') }}
     {{ Form::hidden('order') }}
     <div class="row">
         <section class="col col-6">
@@ -11,9 +12,9 @@
                 <header>Редактирование вопроса:</header>
                 <fieldset>
                     <section>
-                        <label class="label">Название</label>
-                        <label class="input">
-                            {{ Form::text('title') }}
+                        <label class="label">Тип вопроса</label>
+                        <label class="select">
+                            {{ Form::select('is_branding', array('Обычный', 'Брендированный')) }}
                         </label>
                     </section>
                     <section>
@@ -23,21 +24,15 @@
                         </label>
                     </section>
                     <section>
-                        <label class="checkbox">
-                            {{ Form::checkbox('is_true', 1, TRUE) }}
-                            <i></i>Это правда
+                        <label class="label">Утверждение верное?</label>
+                        <label class="select">
+                            {{ Form::select('is_true', array('Нет, ложное.', 'Да, верное.')) }}
                         </label>
                     </section>
                     <section>
                         <label class="label">Ответ</label>
                         <label class="input">
                             {{ Form::textarea('answer', NULL ,array('class'=>'redactor')) }}
-                        </label>
-                    </section>
-                    <section>
-                        <label class="checkbox">
-                            {{ Form::checkbox('is_branding', 1, NULL) }}
-                            <i></i>Брендированный
                         </label>
                     </section>
                 </fieldset>
