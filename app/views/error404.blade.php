@@ -1,12 +1,7 @@
 @extends(Helper::layout())
-
-
 @section('style')
 @stop
-
-
 @section('content')
-
     <main>
         <div class="slideshow">
             <div class="slide">
@@ -31,9 +26,6 @@
             <div class="arrow arrow-right"><span class="icon icon-angle-right"></span></div>
         </div>
     </main>
-
 @stop
-
-
 @section('scripts')
 @stop

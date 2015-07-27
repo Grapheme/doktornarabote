@@ -16,29 +16,19 @@ class ApplicationController extends BaseController {
         return array(
             'name' => self::$name,
             'group' => self::$group,
-            'title' => 'Вяземские сады',
+            'title' => 'Доктор на работе',
             'visible' => 1,
         );
     }
 
     public static function returnMenu() {
 
-        $menu_child[] = array(
-            'title' => 'Готовы дома',
-            'link' => 'buildings',
-            'class' => 'fa-circle',
-        );
-        $menu_child[] = array(
-            'title' => 'Участки',
-            'link' => 'land',
-            'class' => 'fa-circle-o',
-        );
         $menu[] = array(
-            'title' => 'Каталог',
-            'link' => '#',
+            'title' => 'Вопросы',
+            'link' => QuestionsController::$name,
             'class' => 'fa-book',
             'system' => 1,
-            'menu_child' => $menu_child,
+            'menu_child' => NULL,
             'permit' => 'view'
         );
         return $menu;

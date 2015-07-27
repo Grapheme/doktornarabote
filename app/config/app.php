@@ -10,6 +10,8 @@ return array(
 	'use_scripts_local' => FALSE,
 	
 	'default_page_title' => 'Доктор на работе',
+	'default_description' => '',
+	'default_keywords' => '',
 	'template' => 'default',
     'welcome_page_tpl' => 'templates.site.index', #'guests.welcome',
 

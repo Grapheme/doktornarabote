@@ -18,6 +18,12 @@ class GroupsTableSeeder extends Seeder{
 			'dashboard' => 'admin'
 		));
 
+        Group::create(array(
+            'name' => 'doctors',
+            'desc' => 'Доктора',
+            'dashboard' => 'doctors'
+        ));
+
         ## SELECT CONCAT("['module' => '", module, "', 'action' => '", action, "'],") FROM `actions` WHERE 1
 
         $actions = [
