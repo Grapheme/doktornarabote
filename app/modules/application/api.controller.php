@@ -65,7 +65,7 @@ class ApiController extends BaseController {
                 $echo .= 'Результат JSON-строка следующего вида:' . "<br>\n";
                 $echo .= 'Ошибка - {"error": 1,"data":"_пусто_","message":"_пусто_|Неверный токен"}.' . "<br>\n";
                 $echo .= 'Успех - {"error": 0,"data":"Массив данных","message":"_пусто_"}.' . "<br>\n";
-                $echo .= 'Где data = [question: string (Текст вопроса), is_true: integer 0|1 (Это правда), answer: string (Текст правильного ответа), is_branding : integer 0|1 (Брендированный)]' . "<br><br>\n\n";
+                $echo .= 'Где data = [question: string (Текст вопроса), doctor_type : integer (Номер доктора), is_true: integer 0|1 (Это правда), answer: string (Текст правильного ответа), is_branding : integer 0|1 (Брендированный)]' . "<br><br>\n\n";
                 $echo .= 'Пример вызова API с GET параметрами:' . "<br>\n";
                 $echo .= '/api/questions?token=' . md5('_questions_' . 'doctor_on_work_testing') . "&doctor=1<br>\n";
                 $echo .= 'Где:' . "<br>\n";
@@ -74,6 +74,7 @@ class ApiController extends BaseController {
                 $echo .= 'Например:'."<br>\n";
                 $echo .= '/api/questions?token=' . md5('_questions_' . 'doctor_on_work_testing') . "&doctor=2<br>\n";
                 $echo .= '/api/questions?token=' . md5('_questions_' . 'doctor_on_work_testing') . "&doctor=уролог<br>\n";
+                $echo .= 'Внимание. Если не передавать параметр doctor в ответе будет полный список вопросов'."\n";
                 break;
         endswitch;
         Helper::ta($echo);
@@ -139,6 +140,7 @@ class ApiController extends BaseController {
                 foreach ($questions_list as $question):
                     $questions[] = array(
                         'question' => trim($question->question),
+                        'doctor_type' => $question->doctor_type,
                         'is_true' => $question->is_true,
                         'answer' => trim($question->answer),
                         'is_branding' => $question->is_branding
