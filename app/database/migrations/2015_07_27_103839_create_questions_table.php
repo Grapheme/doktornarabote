@@ -8,6 +8,7 @@ class CreateQuestionsTable extends Migration {
 	public function up(){
 		Schema::create('questions', function(Blueprint $table){
 			$table->increments('id');
+			$table->integer('doctor_type')->unsigned()->nullable()->index();
 			$table->integer('order')->unsigned()->nullable()->index();
 			$table->string('title',128)->nullable();
 			$table->boolean('is_branding')->default(0)->unsigned()->nullable();

@@ -18,6 +18,12 @@
                         </label>
                     </section>
                     <section>
+                        <label class="label">Врач</label>
+                        <label class="select">
+                            {{ Form::select('doctor_type', Config::get('doktornarabote.doctor_types')) }}
+                        </label>
+                    </section>
+                    <section>
                         <label class="label">Вопрос</label>
                         <label class="input">
                             {{ Form::textarea('question', NULL ,array('class'=>'redactor')) }}
