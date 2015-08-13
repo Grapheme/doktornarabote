@@ -121,7 +121,7 @@ class ApiController extends BaseController {
                     $doctor_type_id = 0;
                     foreach($doctors_types as $index => $name):
                         if(is_numeric($doctor_type)):
-                            if($name == $doctor_type):
+                            if($index == (int)$doctor_type):
                                 $doctor_type_id = $index;
                                 break;
                             endif;
