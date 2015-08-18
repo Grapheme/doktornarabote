@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration {
     			$table->string('password',60)->nullable();
     			$table->string('photo',100)->nullable();
     			$table->string('thumbnail',100)->nullable();
+    			$table->integer('right_answers')->default(0)->nullable()->unsigned();
     			$table->string('temporary_code',25)->nullable();
     			$table->bigInteger('code_life')->nullable();
     			$table->string('remember_token',100)->nullable();

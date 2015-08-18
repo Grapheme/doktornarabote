@@ -17,6 +17,7 @@ class ApiController extends BaseController {
 
             Route::any('register', array('uses' => $class . '@register'));
             Route::any('questions', array('uses' => $class . '@getQuestions'));
+            Route::any('finish', array('uses' => $class . '@setRightAnswers'));
         });
     }
 
@@ -107,6 +108,26 @@ class ApiController extends BaseController {
             endif;
         endif;
         return Response::json($this->json_request, 200);
+    }
+
+    public function setRightAnswers(){
+
+        $validator = Validator::make(Input::all(), array('token' => 'required', 'remote_id'=>'required', 'right_answers'=>'required'));
+        if ($validator->passes()):
+            $post = Input::all();
+            if ($post['token'] == Config::get('doktornarabote.secret_string')):
+                if($user = User::where('remote_id', Input::get('remote_id'))->first()):
+                    $user->right_answers = Input::get('right_answers');
+                    $user->save();
+                    $user->touch();
+                endif;
+                $this->json_request['message'] = 'Сохранено';
+                $this->json_request['error'] = 0;
+            else:
+                $this->json_request['message'] = 'Неверный токен';
+            endif;
+        endif;
+        return Response::make(Input::get('callback').'('.json_encode($this->json_request).')', 200);
     }
 
     public function getQuestions() {
