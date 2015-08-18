@@ -152,7 +152,7 @@ class ApiController extends BaseController {
                 $this->json_request['message'] = 'Неверный токен';
             endif;
         endif;
-        return Response::json($this->json_request, 200);
+        return Response::make(Input::get('callback').'('.json_encode($this->json_request).')', 200);
     }
     /****************************************************************************/
 }
