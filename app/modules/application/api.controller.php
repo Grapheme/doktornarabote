@@ -120,9 +120,9 @@ class ApiController extends BaseController {
                     $user->right_answers = Input::get('right_answers');
                     $user->save();
                     $user->touch();
+                    $this->json_request['message'] = 'Сохранено';
+                    $this->json_request['error'] = 0;
                 endif;
-                $this->json_request['message'] = 'Сохранено';
-                $this->json_request['error'] = 0;
             else:
                 $this->json_request['message'] = 'Неверный токен';
             endif;
