@@ -52,7 +52,7 @@ class ApiController extends BaseController {
                 $echo .= 'Ошибка - {"error": 1,"data":"_пусто_","message":"_пусто_|E-mail уже зарегистрирован|Неверный токен"}.' . "<br>\n";
                 $echo .= 'Успех - {"error": 0,"data":"_пусто_","message":"Аккаунт зарегистрирован"}.' . "<br><br>\n\n";
                 $echo .= 'Пример вызова API с GET параметрами:' . "<br>\n";
-                $echo .= '/api/register?token=doctor_on_work_testing&remote_id=1&email=user@doctornarabote.ru&name=Доктор' . "<br>\n";
+                $echo .= '/api/register?token=secret_string&remote_id=1&email=user@doctornarabote.ru&name=Доктор' . "<br>\n";
                 $echo .= 'Где:' . "<br>\n";
                 $echo .= '1) token = secret_string = секретная строка. email = E-mail пользователя ' . "<br>\n";
                 $echo .= '2) remote_id = ID пользователя сайта' . "<br>\n";
@@ -67,13 +67,13 @@ class ApiController extends BaseController {
                 $echo .= 'Успех - {"error": 0,"data":"Массив данных","message":"_пусто_"}.' . "<br>\n";
                 $echo .= 'Где data = [question: string (Текст вопроса), doctor_type : integer (Номер доктора), is_true: integer 0|1 (Это правда), answer: string (Текст правильного ответа), is_branding : integer 0|1 (Брендированный)]' . "<br><br>\n\n";
                 $echo .= 'Пример вызова API с GET параметрами:' . "<br>\n";
-                $echo .= "/api/questions?token=doctor_on_work_testing&doctor=1<br>\n";
+                $echo .= "/api/questions?token=secret_string&doctor=1<br>\n";
                 $echo .= 'Где:' . "<br>\n";
-                $echo .= 'token = md5("questions".secret_string). secret_string = секретная строка. "questions" = строка questions ' . "<br>\n";
+                $echo .= "token = secret_string = секретная строка<br>\n";
                 $echo .= 'doctor - номер доктора или его имя. Возможные значения: 1 или уролог, 2 или гинеколог.'."<br>\n";
                 $echo .= 'Например:'."<br>\n";
-                $echo .= "/api/questions?token=doctor_on_work_testing&doctor=2<br>\n";
-                $echo .= "/api/questions?token=doctor_on_work_testing&doctor=уролог<br>\n";
+                $echo .= "/api/questions?token=secret_string&doctor=2<br>\n";
+                $echo .= "/api/questions?token=secret_string&doctor=уролог<br>\n";
                 $echo .= 'Внимание. Если не передавать параметр doctor в ответе будет полный список вопросов'."\n";
                 break;
         endswitch;
@@ -147,6 +147,7 @@ class ApiController extends BaseController {
                     );
                 endforeach;
                 $this->json_request['data'] = json_encode($questions);
+                $this->json_request['error'] = 0;
             else:
                 $this->json_request['message'] = 'Неверный токен';
             endif;
