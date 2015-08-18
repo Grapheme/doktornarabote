@@ -146,7 +146,7 @@ class ApiController extends BaseController {
                         'is_branding' => $question->is_branding
                     );
                 endforeach;
-                $this->json_request['data'] = json_encode($questions);
+                $this->json_request['data'] = $questions;
                 $this->json_request['error'] = 0;
             else:
                 $this->json_request['message'] = 'Неверный токен';
