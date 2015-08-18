@@ -151,7 +151,6 @@ class ApiController extends BaseController {
                 $this->json_request['message'] = 'Неверный токен';
             endif;
         endif;
-        Helper::tad(json_decode($this->json_request['data'], TRUE));
         return Response::json($this->json_request, 200);
     }
     /****************************************************************************/
