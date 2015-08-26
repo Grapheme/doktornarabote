@@ -4,7 +4,7 @@
 @section('content')
     @include($module['tpl'].'.questions.menu')
     {{ Form::model($question, array('route'=>array('questions.update',$question->id),'class'=>'smart-form','id'=>'questions-form','role'=>'form','method'=>'put')) }}
-    {{ Form::hidden('title') }}
+    {{ Form::hidden('title', ) }}
     {{ Form::hidden('order') }}
     <div class="row">
         <section class="col col-6">
@@ -61,7 +61,7 @@
         var essence = 'questions';
         var essence_name = 'вопрос';
         var validation_rules = {
-            title: {required: true, maxlength: 100},
+            title: {required: true},
             question: {required: true},
             answer: {required: true},
         };
