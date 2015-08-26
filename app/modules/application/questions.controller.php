@@ -65,7 +65,7 @@ class QuestionsController extends BaseController {
             $question = new Questions();
             $question->order = Input::get('order');
             $question->doctor_type = Input::get('doctor_type');
-            $question->title = substr(strip_tags(Input::get('title')),0 , 45);
+            $question->title = substr(strip_tags(Input::get('title')),0 , 100);
             $question->question = Input::get('question');
             $question->answer = Input::get('answer');
             $question->is_branding = Input::get('is_branding');
@@ -99,7 +99,7 @@ class QuestionsController extends BaseController {
             $question = Questions::where('id', $question_id)->first();
             $question->order = Input::get('order');
             $question->doctor_type = Input::get('doctor_type');
-            $question->title = substr(strip_tags(Input::get('title')),0 , 45);
+            $question->title = substr(strip_tags(Input::get('title')),0 , 100);
             $question->question = Input::get('question');
             $question->answer = Input::get('answer');
             $question->is_branding = Input::get('is_branding');
