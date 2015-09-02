@@ -39,6 +39,7 @@ class ApiController extends BaseController {
     public function help() {
         $echo = '<a href="/api/help/register">Метод Register. Добавление пользователя в систему тестирования докторов</a>' . "<br>\n";
         $echo .= '<a href="/api/help/questions">Метод Questions. Получение списка вопросов</a>' . "<br>\n";
+        $echo .= '<a href="/api/help/finish">Метод Finish. Запись количества правильных ответов</a>' . "<br>\n";
         Helper::ta($echo);
     }
 
@@ -55,7 +56,7 @@ class ApiController extends BaseController {
                 $echo .= 'Пример вызова API с GET параметрами:' . "<br>\n";
                 $echo .= '/api/register?token=secret_string&remote_id=1&email=user@doctornarabote.ru&name=Доктор' . "<br>\n";
                 $echo .= 'Где:' . "<br>\n";
-                $echo .= '1) token = secret_string = секретная строка. email = E-mail пользователя ' . "<br>\n";
+                $echo .= '1) token = secret_string = секретная строка.' . "<br>\n";
                 $echo .= '2) remote_id = ID пользователя сайта' . "<br>\n";
                 $echo .= '3) email = E-mail пользователя' . "<br>\n";
                 $echo .= '4) name - Имя пользователя';
@@ -76,6 +77,19 @@ class ApiController extends BaseController {
                 $echo .= "/api/questions?token=secret_string&doctor=2<br>\n";
                 $echo .= "/api/questions?token=secret_string&doctor=уролог<br>\n";
                 $echo .= 'Внимание. Если не передавать параметр doctor в ответе будет полный список вопросов'."\n";
+                break;
+            case 'finish':
+                $echo = 'Подсказка по методу Finish. Запись количества правильных ответов.' . "<br>\n";
+                $echo .= 'Обновление количества правильных ответов происходит отправкой данных методами GET или POST.' . "<br>\n";
+                $echo .= 'Результат JSON-строка следующего вида:' . "<br>\n";
+                $echo .= 'Ошибка - {"error": 1,"data":"_пусто_","message":"_пусто_|Неверный токен"}.' . "<br>\n";
+                $echo .= 'Успех - {"error": 0,"message":"Сохранено"}.' . "<br>\n";
+                $echo .= 'Пример вызова API с GET параметрами:' . "<br>\n";
+                $echo .= "/api/finish?token=secret_string&remote_id=1&right_answers=1<br>\n";
+                $echo .= 'Где:' . "<br>\n";
+                $echo .= '1) token = secret_string = секретная строка.' . "<br>\n";
+                $echo .= '2) remote_id = ID пользователя сайта' . "<br>\n";
+                $echo .= '3) right_answers = Количество правильных ответов';
                 break;
         endswitch;
         Helper::ta($echo);
