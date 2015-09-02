@@ -118,6 +118,7 @@ class ApiController extends BaseController {
             if ($post['token'] == Config::get('doktornarabote.secret_string')):
                 if($user = User::where('remote_id', Input::get('remote_id'))->first()):
                     $user->right_answers = Input::get('right_answers');
+                    $user->test_date = date('Y-m-d H:i:s');
                     $user->save();
                     $user->touch();
                     $this->json_request['message'] = 'Сохранено';
