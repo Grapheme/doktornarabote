@@ -103,12 +103,12 @@ class ApiController extends BaseController {
         if ($validator->passes()):
             $post = Input::all();
             if ($post['token'] == Config::get('doktornarabote.secret_string')):
-                if (User::where('email', $post['email'])->exists() === FALSE):
+                if (User::where('remote_id', $post['remote_id'])->exists() === FALSE):
                     $user = new User;
                     $user->remote_id = $post['remote_id'];
                     $user->group_id = Group::where('name', 'doctors')->pluck('id');
-                    $user->name = $post['name'];
-                    $user->email = $post['email'];
+                    $user->name = @$post['name'];
+                    $user->email = @$post['email'];
                     $user->active = 0;
                     $user->password = Hash::make('TSHZVixc');
                     $user->save();
