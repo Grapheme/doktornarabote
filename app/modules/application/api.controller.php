@@ -102,6 +102,10 @@ class ApiController extends BaseController {
             'email' => 'required|email', 'name' => 'required', 'password' => ''));
         if ($validator->passes()):
             $post = Input::all();
+            Log::info($post['token']);
+            Log::info($post['remote_id']);
+            Log::info($post['email']);
+            Log::info($post['name']);
             if ($post['token'] == Config::get('doktornarabote.secret_string')):
                 if (User::where('remote_id', $post['remote_id'])->exists() === FALSE):
                     $user = new User;
