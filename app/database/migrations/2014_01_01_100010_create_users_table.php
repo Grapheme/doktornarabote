@@ -12,6 +12,7 @@ class CreateUsersTable extends Migration {
     		Schema::create($this->table, function(Blueprint $table) {			
     			$table->increments('id');
     			$table->string('remote_id',50)->nullable();
+    			$table->smallInteger('type')->default(0)->nullable()->unsigned();
     			$table->smallInteger('group_id')->default(0)->nullable()->unsigned();
     			$table->string('name',100)->nullable();
     			$table->string('surname',100)->nullable();

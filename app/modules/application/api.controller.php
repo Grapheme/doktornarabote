@@ -106,6 +106,7 @@ class ApiController extends BaseController {
                 if (User::where('remote_id', $post['remote_id'])->exists() === FALSE):
                     $user = new User;
                     $user->remote_id = $post['remote_id'];
+                    $user->type = isset($post['type']) ? $post['type'] : 0;
                     $user->group_id = Group::where('name', 'doctors')->pluck('id');
                     $user->name = @$post['name'];
                     $user->email = @$post['email'];
@@ -126,12 +127,13 @@ class ApiController extends BaseController {
 
     public function setRightAnswers(){
 
-        $validator = Validator::make(Input::all(), array('token' => 'required', 'remote_id'=>'required', 'right_answers'=>'required'));
+        $validator = Validator::make(Input::all(), array('token' => 'required', 'remote_id'=>'required', 'right_answers'=>'required', 'type'=>'required'));
         if ($validator->passes()):
             $post = Input::all();
             if ($post['token'] == Config::get('doktornarabote.secret_string')):
                 if($user = User::where('remote_id', Input::get('remote_id'))->first()):
                     $user->right_answers = Input::get('right_answers');
+                    $user->type = Input::has('type') ? Input::get('type') : 0;
                     $user->test_date = date('Y-m-d H:i:s');
                     $user->save();
                     $user->touch();
