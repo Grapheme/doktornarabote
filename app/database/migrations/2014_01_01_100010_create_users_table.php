@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration {
     			$table->smallInteger('group_id')->default(0)->nullable()->unsigned();
     			$table->string('name',100)->nullable();
     			$table->string('surname',100)->nullable();
-    			$table->string('email',100)->unique()->nullable();
+    			$table->string('email',100)->nullable();
     			$table->smallInteger('active')->default(0)->nullable()->unsigned();
     			$table->string('password',60)->nullable();
     			$table->string('photo',100)->nullable();
