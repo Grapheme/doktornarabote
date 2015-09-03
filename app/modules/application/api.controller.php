@@ -130,10 +130,13 @@ class ApiController extends BaseController {
         $validator = Validator::make(Input::all(), array('token' => 'required', 'remote_id'=>'required', 'right_answers'=>'required', 'type'=>'required'));
         if ($validator->passes()):
             $post = Input::all();
+            Log::info($post['token']);
+            Log::info($post['type']);
+            Log::info($post['right_answers']);
             if ($post['token'] == Config::get('doktornarabote.secret_string')):
                 if($user = User::where('remote_id', Input::get('remote_id'))->first()):
-                    $user->right_answers = Input::get('right_answers');
                     $user->type = Input::has('type') ? Input::get('type') : 0;
+                    $user->right_answers = Input::get('right_answers');
                     $user->test_date = date('Y-m-d H:i:s');
                     $user->save();
                     $user->touch();
