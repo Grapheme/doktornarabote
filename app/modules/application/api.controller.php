@@ -115,7 +115,7 @@ class ApiController extends BaseController {
                     $this->json_request['error'] = 0;
                     $this->json_request['message'] = 'Аккаунт зарегистрирован.';
                 else:
-                    $this->json_request['message'] = 'E-mail уже зарегистрирован.';
+                    $this->json_request['message'] = 'Аккаунт уже зарегистрирован.';
                 endif;
             else:
                 $this->json_request['message'] = 'Неверный токен';
